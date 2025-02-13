@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة منتج جديد</title>
+</head>
+<body>
+    <h1>إضافة منتج جديد</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">إضافة المنتج</button>
+    </form>
+    <br>
+    <a href="{% url 'product_list' %}">🔙 العودة إلى قائمة المنتجات</a>
+</body>
+</html>

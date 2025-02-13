@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة المنتجات</title>
+</head>
+<body>
+    <h1>قائمة المنتجات</h1>
+    <ul id="product-list">
+        {% for product in products %}
+            <li>{{ product.name }} - ${{ product.price }}</li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        let socket = new WebSocket("ws://" + window.location.host + "/ws/products/");
+    
+        socket.onopen = function() {
+            console.log("✅ WebSocket Connected!");
+        };
+    
+        socket.onerror = function(error) {
+            console.log("❌ WebSocket Error: ", error);
+        };
+    
+        socket.onmessage = function(event) {
+            console.log("📩 WebSocket Message Received: ", event.data);
+    
+            fetch('/products/json/')
+            .then(response => response.json())
+            .then(data => {
+                let productList = document.getElementById("product-list");
+                productList.innerHTML = "";
+                data.products.forEach(product => {
+                    let li = document.createElement("li");
+                    li.textContent = `${product.name} - $${product.price}`;
+                    productList.appendChild(li);
+                });
+            });
+        };
+    
+        socket.onclose = function() {
+            console.log("❌ WebSocket Disconnected!");
+        };
+    </script>
+</body>
+</html>
