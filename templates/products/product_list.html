@@ -34,7 +34,7 @@
                 productList.innerHTML = "";
                 data.products.forEach(product => {
                     let li = document.createElement("li");
-                    li.textContent = `${product.name} - $${product.price}`;
+                    li.textContent = `${product.name} - $${product.price} - ${product.description}`;
                     productList.appendChild(li);
                 });
             });
