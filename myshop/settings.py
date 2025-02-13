@@ -137,7 +137,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # تأكد من أن لديك مجلد static في مشروعك
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

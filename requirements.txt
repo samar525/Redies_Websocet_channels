@@ -8,3 +8,4 @@ gunicorn==20.1.0
 channels==4.0.0
 redis==5.0.1
 daphne
+whitenoise=6.9.0
