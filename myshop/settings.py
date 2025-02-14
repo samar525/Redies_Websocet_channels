@@ -53,7 +53,7 @@ CHANNEL_LAYERS = {
     },
 }
 
-
+CSRF_TRUSTED_ORIGINS = ['https://ridiculous-bernie-golackdash-75817a4b.koyeb.app']
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
